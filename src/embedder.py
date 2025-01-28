@@ -1,10 +1,12 @@
 import asyncio
-from transformers import AutoTokenizer, AutoModel
-import torch
 from typing import List
 
+import torch
+from transformers import AutoModel, AutoTokenizer
+
+
 class LaBSEEmbedder:
-    def __init__(self, model_name: str, device:str='mps'):
+    def __init__(self, model_name: str, device: str = "mps"):
         self.device = device
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModel.from_pretrained(model_name).to(self.device)
